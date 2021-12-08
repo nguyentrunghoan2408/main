@@ -1,0 +1,12 @@
+---
+- hosts: all
+  connection: network_cli
+  gather_facts: no
+
+  tasks:
+  - name: "Get Dell EMC OS6 Show running config"
+    dellos6_command:
+      commands: ['show run']
+    register: show_run
+
+  - debug: var=show_run
